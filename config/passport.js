@@ -28,12 +28,12 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
+passport.serializeUser(function(user, cb) {
+    cb(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(id, cb) {
     User.findById(id, function(err, user) {
-      done(err, user);
+      cb(err, user);
     });
   });
