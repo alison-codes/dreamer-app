@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const userCtrl = require('../controllers/users')
+var Sentiment = require('sentiment');
+var sentiment = new Sentiment();
+// var currentSentiment = ('hello world')
+// var result = sentiment.analyze(currentSentiment);
+// console.dir(result); 
 
-router.get('/', userCtrl.index);
-router.get('/show', userCtrl.show);
+// router.get('/show', userCtrl.show);
 
 module.exports = router;

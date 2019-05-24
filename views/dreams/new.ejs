@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+
+<h1>Enter your dream details</h1>
+<form>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">What do you remember about this dreams?</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+        </div>
+      </form>
+      <div class="form-group">
+            <label for="exampleFormControlSelect1">Who was in your dream?</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>Pet</option>
+              <option>Father</option>
+              <option>Mother</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary mb-2">Log dream</button>
+<%- include('../partials/footer') %>
