@@ -23,7 +23,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/dreamerAppCallback', passport.authenticate(
   'google',
   {
-    successRedirect : '/',
+    successRedirect : '/dreams',
     failureRedirect : '/'
   }
 ));

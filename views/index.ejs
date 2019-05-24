@@ -3,7 +3,11 @@
     <p><br>People dream on average for over six years.</p>
     <h1 id="landing-page-question">ARE YOU A DREAMER?</h1>
     <div class="btn">
-        <a href="/dreams/new">Get Started With Reverie</a>
+        <% if (user) { %>
+            <a href="/dreams/" class="btn btn-primary mb-2">Unlock your dreams</a>
+        <% } else { %>
+            <a href="/dreams/new" class="btn btn-primary mb-2">Get Started With Reverie</a>
+        <% } %>
     </div>
 </main>
 

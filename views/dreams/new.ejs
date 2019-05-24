@@ -1,20 +1,36 @@
 <%- include('../partials/header') %>
 
 <h1>Enter your dream details</h1>
-<form>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">What do you remember about this dreams?</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-        </div>
-      </form>
+<form action="/dreams" method="POST">
+    <div class="form-group">
+        <label for="exampleFormControlDate">When did this dream occur?</label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>      </div>
+        
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">What do you remember about this dreams?</label>
+        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+    </div>
+
       <div class="form-group">
-            <label for="exampleFormControlSelect1">Who was in your dream?</label>
+          <label>How many total hours did you sleep?</label>
+          <input class="form-control" type="number" placeholder="8" id="example-number-input">
+      </div>
+
+      <div class="form-group">
+          <label for="exampleFormControlSelect1">Who was in your dream?</label>
             <select class="form-control" id="exampleFormControlSelect1">
               <option>Pet</option>
               <option>Father</option>
               <option>Mother</option>
             </select>
-          </div>
+        </div>
 
+        <% if (user) { %>
           <button type="submit" class="btn btn-primary mb-2">Log dream</button>
-<%- include('../partials/footer') %>
+      <% } else { %>
+          <a href="/" class="btn btn-primary mb-2">Log dream</a>
+      <% } %>
+  
+</form>
+
+ <%- include('../partials/footer') %>

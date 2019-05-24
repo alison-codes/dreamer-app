@@ -7,12 +7,10 @@ module.exports = {
 };
 
 function index(req, res) {
-    // res.redirect('/auth/google');
     res.render('index', {
         user: req.user,
         title: 'Welcome to Reverie',
     });
-    // console.log("name is : " + req.query.name)
 }
 
 
