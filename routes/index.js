@@ -3,13 +3,6 @@ var router = express.Router();
 var passport = require('passport');
 const usersCtrl = require('../controllers/users');
 
-
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Reverie' });
-// });
-
-
 router.get('/', usersCtrl.index);
 
 //helper func for protecting pages

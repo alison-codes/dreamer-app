@@ -1,23 +1,43 @@
 <%- include('../partials/header') %>
 
 <h1><%= name %>'s Dreams </h1>
-
-<table>
+<table class="table">
         <thead>
           <tr>
-            <th>Date?  </th>
-            <th>What Happened?   <br></th>
-            <th>Hours slept?   </th>
+            <th scope="col">Sentiment #</th>
+            <th scope="col">Sentiment Meaning</th>
+            <th scope="col">Date?</th>
+            <th scope="col">Hours slept?</th>
+            <th scope="col">Description</th>
           </tr>
         </thead>
         <tbody>
-          
-            <tr>
-             
-            </tr>
-           
-          </tbody>
-        </table>
+                <% dreams.forEach(function(d) { %>
+          <tr>
+            <td><%= d.score %></td>
+            <td>
+              
+                <% if (d.score > 0.4) { %>
+                  Positive
+              <% } else if (d.score < 0.3){ %>
+                 Negative
+              <% } else  { %>
+                Neutral
+             <% } %>
+            
+            
+            </td>
+            <td><%= d.date %></td>
+            <td><%= d.hoursSlept %></td>
+            <td><i> <%= d.description %></i></td>
+            <td>  <form action="/dreams/<%= d.id %>?_method=DELETE"
+                id="delete-form" method="POST">
+                <button type="submit">X</button>
+              </form> </td> 
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
         <br>
 <a href="/dreams/new" class="btn btn-primary mb-2">Add more dreams</a>
  <%- include('../partials/footer') %>
