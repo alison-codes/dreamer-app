@@ -6,11 +6,11 @@ const dreamSchema = new mongoose.Schema({
 		type: Number,
 		// default: () => Date.now() + (364 * 24 * 60 * 60 * 1000),
 	},
-    description: {
+	description: {
 		type: String,
 		required: true,
-	  },
-    score: Number,
+	},
+	score: Number,
 	sentiment: String,
 	hoursSlept: Number,
 })

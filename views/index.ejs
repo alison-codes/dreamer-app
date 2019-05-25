@@ -1,14 +1,27 @@
 <%- include('partials/header') %>
-<main class="landing-page-text">
-    <p><br>People dream on average for over six years.</p>
+
+<main class="landing-page">
+  <div id="tint">
+  <div id="landing-page-text">
+    <p>During a typical lifetime, people <br>spend an average of six years dreaming.</p>
     <h1 id="landing-page-question">ARE YOU A DREAMER?</h1>
-    <div class="btn">
-        <% if (user) { %>
-            <a href="/dreams/" class="btn btn-primary mb-2">Unlock your dreams</a>
-        <% } else { %>
-            <a href="/dreams/new" class="btn btn-primary mb-2">Get Started With Reverie</a>
-        <% } %>
-    </div>
+    <% if (user) { %>
+    <a href="/dreams/" class="btn btn-primary mb-2">Unlock your dreams</a>
+    <% } else { %>
+    <a href="/dreams/new" class="btn btn-primary mb-2">Get Started With Reverie</a>
+    <% } %>
+  </div>
+  </div>
 </main>
+<section id="home">
+  <video id='my-video' class='video-js' controls muted="muted" autoplay poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
+    <source src='/videos/people-walking.mp4' type='video/mp4'>
+    <p class='vjs-no-js'>
+      To view this video please enable JavaScript, and consider upgrading to a web browser that
+      <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+    </p>
+  </video>
+</div>
+</section>
 
 <%- include('partials/footer') %>

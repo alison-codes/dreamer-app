@@ -4,35 +4,37 @@
 <form action="/dreams" method="POST">
 
   <div class="form-group">
-      <label for="example-datetime-local-input">When did you have this dream?</label>
-        <input name="date" class="form-control" type="date" placeholder="MM/DD/YYY"value="2011-08-19T13:45:00">
+    <label for="example-datetime-local-input">When did you have this dream?</label>
+    <input name="date" class="form-control" type="date" placeholder="MM/DD/YYY" value="2011-08-19T13:45:00">
   </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">What do you remember about it?</label>
-        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-    </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">What do you remember about it?</label>
+    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+  </div>
 
-      <div class="form-group">
-          <label>How many total hours did you sleep?</label>
-          <input class="form-control" name="hoursSlept" type="number"  step="0.25" placeholder="8" id="example-number-input">
-      </div>
+  <div class="form-group">
+    <label>How many total hours did you sleep?</label>
+    <input class="form-control" name="hoursSlept" type="number" step="0.25" placeholder="8" id="example-number-input">
+  </div>
 
-      <div class="form-group">
-          <label for="exampleFormControlSelect1">Who was in your dream?</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>Pet</option>
-              <option>Father</option>
-              <option>Mother</option>
-            </select>
-        </div>
+  <% if (user) { %>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Who was in your dream?</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Pet</option>
+      <option>Father</option>
+      <option>Mother</option>
+    </select>
+  </div>
+  <% } %>
 
-        <% if (user) { %>
-          <button type="submit" class="btn btn-primary mb-2">Log dream</button>
-      <% } else { %>
-          <a href="/" class="btn btn-primary mb-2">Log dream</a>
-      <% } %>
-  
+  <% if (user) { %>
+  <button type="submit" class="btn btn-primary mb-2">Log dream</button>
+  <% } else { %>
+  <a href="/dreams/<%= %>" class="btn btn-primary mb-2">Log dream</a>
+  <% } %>
+
 </form>
 
- <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

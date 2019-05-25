@@ -2,7 +2,7 @@ const Dream = require('../models/dream');
 
 module.exports = {
     new: newDream,
-    index, 
+    index,
     create,
     show,
     delete: deleteDream,
@@ -15,11 +15,10 @@ function newDream(req, res) {
     });
 }
 
-function index(req, res) { 
+function index(req, res) {
     var str = req.user.name
-    var firstName = str.substr(0,str.indexOf(' '));
-
-    Dream.find({user_id: req.user.id}, function(err, dreams) {
+    var firstName = str.substr(0, str.indexOf(' '));
+    Dream.find({ user_id: req.user.id }, function (err, dreams) {
         res.render('dreams/', {
             user: req.user,
             title: 'Welcome to Reverie',
@@ -34,25 +33,26 @@ function create(req, res) {
     var dream = new Dream(req.body);
     var Sentiment = require('sentiment');
     var sentiment = new Sentiment();
-    var currentSentiment = (dream.description)
+    var currentSentiment = dream.description;
     var result = sentiment.analyze(currentSentiment);
     dream.score = result.score;
-    // console.log("dream:" + dream);
-    dream.save(function(err) {
-      if (err) return res.render('/');
-
-      res.redirect('/dreams');
+    dream.save(function (err) {
+        if (err) return res.render('/');
+        res.redirect('/dreams');
     });
 }
 
 function show(req, res) {
-    res.render('dreams/analysis', {
-    
+    Dream.findByIdAndDelete(req.params.id, function (err, addedDream) {
+        res.render('dreams/show', { title: 'Dream Details', dream });
     });
-  }
+}
+////is show doing anything??
+
+
 
 function deleteDream(req, res) {
-    Dream.findByIdAndDelete(req.params.id, function(err, deletedDream) {
+    Dream.findByIdAndDelete(req.params.id, function (err, deletedDream) {
         res.redirect('/dreams');
     });
 }
