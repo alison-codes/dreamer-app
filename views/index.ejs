@@ -1,27 +1,57 @@
 <%- include('partials/header') %>
-
-<main class="landing-page">
+<div class="landing-page">
   <div id="tint">
-  <div id="landing-page-text">
-    <p>During a typical lifetime, people <br>spend an average of six years dreaming.</p>
-    <h1 id="landing-page-question">ARE YOU A DREAMER?</h1>
-    <% if (user) { %>
-    <a href="/dreams/" class="btn btn-primary mb-2">Unlock your dreams</a>
-    <% } else { %>
-    <a href="/dreams/new" class="btn btn-primary mb-2">Get Started With Reverie</a>
-    <% } %>
+    <div id="landing-page-text">
+      <p>During a typical lifetime, people <br>spend an average of six years dreaming.</p>
+      <h1 id="landing-page-question">ARE YOU A DREAMER?</h1>
+      <% if (user) { %>
+      <a href="/dreams/" class="btn btn-primary btn-large">Unlock your dreams</a>
+      <% } else { %>
+      <a href="/dreams/new" class="btn btn-primary btn-large">Get Started With Reverie</a>
+      <% } %>
+    </div>
   </div>
-  </div>
-</main>
-<section id="home">
-  <video id='my-video' class='video-js' controls muted="muted" autoplay poster='MY_VIDEO_POSTER.jpg' data-setup='{}'>
-    <source src='/videos/people-walking.mp4' type='video/mp4'>
-    <p class='vjs-no-js'>
-      To view this video please enable JavaScript, and consider upgrading to a web browser that
-      <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-    </p>
-  </video>
+  <section id="home">
+    <video id='my-video' class='video-js' loop controls muted="muted" autoplay poster='MY_VIDEO_POSTER.jpg'
+      data-setup='{}'>
+      <source src='/videos/people-walking.mp4' type='video/mp4'>
+      <p class='vjs-no-js'>
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
+
+    </video>
 </div>
 </section>
 
-<%- include('partials/footer') %>
+<a name="about"></a>
+<section class="parallax" data-stellar-background-ratio="0.3" id="bottom-section">
+  <div class="subheading">
+    <h2><br>Our brain is an incredibly creative problem solver. </h2>
+    <br>
+    <h5>
+      Sleep is where some of humanity’s most incredible creations got their start: Electricity, Frankenstein’s monster,
+      nonviolent resistance, laser technology were just a few of the ideas conceived in
+      dreams.<br><br>The sleeping brain is freed of constraints and can thus create whole sequences of free
+      associations.
+      Dreams not only replay memory fragments but also create brand-new, highly creative mixtures of memories and
+      knowledge.
+      <br><br>
+      REVERIE leverages the Sentiment API, developed by Andrew Sliwinski at the MIT Media Lab, a Node.js module that uses the AFINN-165 wordlist and Emoji Sentiment Ranking
+      to perform sentiment analysis.
+      <br><br>
+      We want to help you track, analyze, and unlock your dreams so you can produce humanity's next great creation.
+      <br><br>
+      <% if (user) { %>
+      <a href="/dreams/" class="btn btn-primary btn-subheading">View your dream log</a>
+      <% } else { %>
+      <a href="/dreams/new" class="btn btn-primary btn-subheading">Log your first dream</a>
+      <% } %>
+    </h5>
+    <p id="quote">"A dream you dream alone is only a dream. A dream you dream together is reality." ― John Lennon
+    </p>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
