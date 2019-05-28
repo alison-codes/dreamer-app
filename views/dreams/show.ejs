@@ -1,5 +1,59 @@
 <%- include('../partials/header') %>
 
-<h1>Analysis of dream </h1>
+<% if (user) { %>
+  <a  href="/dreams" class="btn btn-primary mb-2">Return to dream log</a>
+  <% } %>
 
- <%- include('../partials/footer') %>
+<section id="details" class="about-mf sect-pt4 route">
+  <h1 id="center">Analysis of dream </h1>
+  <div class="line"></div>
+  <div class="container">
+      <h3 ><%= dream.date %></h3>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="box-shadow-full">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-sm-6 col-md-5">
+                  <img class="about-img"
+                    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUTExMVFRUXGBYXFhYXFRYVFRUVFxUYFxgXGRcYHSggGBolHRcYITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lHyUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMwA9wMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAABQEDBAIGB//EADYQAAEDAgQEAwcEAgIDAAAAAAEAAhEDIQQSMUEFUWFxIoHwEzKRobHB0RRC4fFSYhWCIzNT/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//EAB4RAQEBAQADAQADAAAAAAAAAAABEQISITFBUWFx/9oADAMBAAIRAxEAPwD4chCFoCEITAIQphXEQhTCkBXByhdQphPEcIXeRBYmDhC7yLnKpghSG2n73vO3kjKiExUFCEJiBCEKKFClCAUIQoBCEIBCEIBCEIBCEIJQhC1gmF01qGBXNprciKg1dZYV2VTllVFIpkkwOqktjUK9oI0VgpygzBvTVQ2ktn6dc5FBSGLio1a2s6LmoydBCgyBqMq0FircxFVQuCFpFJS6n68kGQtUQtJprg01RRChWvYoJsBA77qYK0KYULOAUKUKYqEIQoBCEIBCEIBCEIJUwhdALpIiyiLra2kBtcrPQYm2HsByW2WL2Bn4K51Ek9+VkwZTMEtggiNAbEzvoZGo7blaWYSwPqFm1SoYeIWh1GAIFz9E1OFDTB125nkq30hoTflGixashb7E+guHYQpz7A62iLAzKrNEjU+uazelkKv06g0Oabexv2Wo4VpbNwbba3+Vk8jHnjQXBw3ROqlHZQcOI3+CnkuFJpi6pNKCE4OFm8R81U/DnuteSYTV2SSbmSTOmqrItEJvUw6oqUFZ0haW81XUpjZbqlDyVNSj1WtGNzCFWQtVUefX7qotQUhxERtcLlWuaqyFLByhSoWFCEIQCEIQCEIQdBXU2SqQtmFErrGa0YemmOGZaFQxi2YdpSpDLBUhF+8TrH1WmoDYtOpiDr0PbVVYZuYhvqVrOhnKec3+Sxa1IyYyi6mRJOYb67z8FtaGwTq7Uzz2usHtnOLgTMWnW1gBe+6up0SzI8nMCd5mBMiOllz1vxWvpuc6QDEb9PoF0OGOcCYuOu3Tmn+GxLKlBrXMbLSfFBBI2P8ASy4twkhkm9jI1I0gdVKTfhZ+jiOu53jbuprOYPvtvt65ppRwL3mJmPFBiNJMA72hZsVw5xOXKGxYjcHr1vssXpuQvbTBJg/n1ddNpgWIM7JgOFBgBzC8jtGult1pbhmA5iHEabR6sVJSwpFE6fKFXWwJjTziyeMp0ySQYA2jUALLi331PaFuVgjrYMtJB1Gt5E91jqUE1qPn+1Vkm6s6LCd9BZ6uF6J29gVNSmtys2PP1MOs72WKfvw/RYq1DotSoSuYqntTKrR6Kmph1b1AvIXK2VaMLO5ixorQpIUIoQhCAQhCDtq04Z11lCvo6rrEr0VKmC2ZHabxb15K+iNPoluBfNvymtCIj6pUMcALyDfQD11hMcTDnS9glxygNAALtLAaLBhBoW68luqiYdedddDzBHUetVzrUYzg/ZHKW3iYsevq60CmSA0gzdw6iFdxFzHU2EgtdpMz9NB/C0YeuLAtkjr5TOv9LlW/dcYGuRSgEk8uQ5JnhyPec0wCJDT4gP8AUE6rNSoeIuEGZuLDmZGw/Cf8KaG0y4MnKf8AyB15IgBw53M2WLWnPA6BAeGt94EeIiDoTmBvvZdVadJr81vaExpIGxI25md1s/VBxdVc6XG0QBcfWc3xJSb2bs5cTHIDlusauL6uDMWcDrY7NF4nz06rJTwhPhdYknWwNpGqbNw1SHCCSYM6wI5/FZ6fCi4A7kG3bVWoVjDM92563A6qKuDm1+8J1/x0NNjOxsAqDw94Exrr2TR52tw2LwehWepgTzlejqUTEE+HSJ+yxVMOQfDf1oro866gQdD61VFSjfqvSU6I1dI2jaFAZkJPhI5kA+S6RmvJ5TPNcvp816GtSaWl0RPIR5pa+gDoTK1GaVV8MCl1bDkJ7WoEb2WKp8/sriEGICzOCd1wNOfyWR1AKYFhYq3NW6pThZ3haRmQu3hcIoQhCDpWUiq5XTSusQyw1QgyDdNaFYgi4Mi/4gjVIKFWE4o1AR1SoacPxZBN9oCeMd7SnERG8am/3heVYQCOie8LxoLg2YtEbW5HmudaU1XOzBsOuQG297zW/AG+YftMGdxoQntThjajW5xDgJIbIa6DAJ87x3S6vTDS5tmvGW4EBzdzB18iN1z65xvnrW6gHNAcLs5xEbZT/tzCacOxYZmaI8QI0iJMzzBE+aU8LrvpgszEseQSzk4aEDz+aa4fJ4H9wW73sQZ3/K5dNxmNZ9JxsCHaTeJi5GtluwWFfULoGZsk5hYDQTfQJbxQhx8MtHukaxG9k14RxQNbkc0gz7zba6yI35dCuWz9dM/h7KnSLaBdEwG+Z0BHxS3BtkOlomPecZg3mB9uyqbVJYKZcSACABPvGIMSmeAolwGUyQAZ7iDfyWr15VjxyKBhCROp7i3kN7qWYcgx7OZAEgRAG8Rc6piKAJ8Px0+XNWilB3nn0sFYleWxXDQPEQ4RtYXH3SvFUxYtkxMk5Z8ua9xiKbnyJDv9XCPolXEOHsMj3THhA/y/BV/xHi8TVafCRB3S59AnQwNR3Xq6/CC2YAd159t0oxGAJHgMxqI23j1uk09F7BIDTtcSTE9isGJpw4zYbECxWp7HDn2P5WGtJMGY2F7LpOmLyzVT90vxNFNn0P8AF1+R3sseJoke8OcQftsums4QVKJBVFVvxTWsyUvxDQNFPSsFRqzvaVsqNWZ7VZUsZHhVELVUaqKrYWkVoQhRUqQVC7IGUGbkmRBsBEGd5k/BalR0wpng6w3meaVKymbreofiSDFx9Fv4K1ntGuqyANCIO1rHUTErz2FxDm72W1uJMczMk3sOZ9brNWPq1Li9Oox1KLOAIMkkQ0CBJ3iT1PKy4rcKbUlzXEGNDrpqJHQW6heK4XxrIQTE6T60XqsBxt7XCDDdY1hwIg/wpcv1Pc+KvYvokuMlthOsg6aGw2V+GxgufetBBs49D06hcV+JQQHf5ZwBpYh0Ecpk9NN16Wjw2jiWh3szReWkwHeEvGwm87+a4XjfjtOs+klbFNMS2LgH13hc1mPaQSPDEN6j6HZV8RwBw5LXEkC8xA7mTrbmtvC8ZRqNIJcwAdD5gHUTFlw64deemrhmNa5wBJAbExJ8rr1eFxDrvaczSRB31EdivFYbAFlYNpvkum0RJgnLB3tz3C9Dw/FAg5wabwSDynlBvm7LnljdyvX8MII+3mmFahZebwuMggD3pN4iY25bJpS4uHNkzytpO91156kmVy65v4rrMgyDCy8RfnEtAAEA7gnQTuEY7EyRG5/tYMVW8MAwXGZ2I5dbHVS9LOWRzADBcQZiJt5LBVpspOMSRuCR10k6pnjKAs5shpuG7g9L3i6S4sPe5rMkFxgQQ0OPO5gG/wA1qVMd1MOyofAMuYACZyg3Jk7TZeR4hRLSZH/bpPTay9TSxADcr2wW/A9xpIVeLog0iJsASAZ5Tbrqus9ufx4mvTdqLidpsoNSffEn5rU9zveFwJnnG5IWCrD7xG6sLC/FUJILIP4S/FtjVOgw+XwVOIwYI1v21/C1jOvOuaqKrExxGHgxuslRigyuZsB3tssdYLe4meawYg3W4ipCEIJQhCokFdBcKZWpUaWuV4qkC0fnoeiyMKuY5UamuygeIXEmNAZ0PVO8BxbPla82Fp1t5d0gZ8QtfD3cvgdQs1p7WnhSC0lwIGkPmRsD0M6J0/E4gAFtwIs0SW7WPmvIYetDAQ4l0wWEQ2IFw6ddbQmGGxtSfAYNrE2WbEPXcSFVr2va12azpEPb0nvKxV2MMOFQmDZrY8HPSwi6z/pyDmLcwMyNPouarakEMpidJLg0kk/t8rLn1HTmmmCxTnMbmJJbFze14JINjEFO2MnxftLYc1riJicpIPKRvsvM02CmySS0kEODRAsLa2J6KcJxKoCA6Sbed1xvDp5Pb0eL1gBlcZAgUzc5di10ST35Kylxm0VGlv8AuIOYHmSNd5Xn6XFnNAc9onVoIuDsetx/Ke4Uh9OC45jJkCASCSO1zv8Aws+F/F8p+tNTiLSIYMoLpzXiREd/Mc12cWKrmtZo50xuC2ST0ulVPh2Wr7ziSCADGXxSBIV//pa0NInQ5jIMXdDpt70WUnNLYdYuAW0zZpYCXAzBtJB2mYXk+PVoqEFwIy2vHa23ZNRj3U67cxBblByzDRJdEE3tb4k7LznGaQnNYtcXFsDKbaCDcbLd9xmT20HEzSYBci8ycwJme2keSz4jEEtAM2sQd+fncKng1KfE4bi5mAG6hX1qha4l4HJoJAkHn1V5TonxrMpBbYmCTvBEflLH0SC0tdIdYjkYnyTTHYoAg5REgEO59zqErxhu4gQDOhIAt3ldGVVeqGm4Mcxf1oqvaaO1hclrog7fLWCpwz2O8Nz/ALcvytys2MmKqA3iCOdu6WvIJM25QJvt5dU6xeDb/G48x9EmrshW6nphrJbUN0zxBslRVkRCEIQShQpVAhCEHTSrGvVMqQVrUbGPWvD1NBy+KWNcr6T1R6KkxziDYA6xqIO47X+C0uxBYHQ4GDtr3SCnUmLrXQcRexIi1rjqpYseqw/Ey4AwY0nbzTBmKEGAQvJ4Lijqb8wIA5G/qydYXGCoJnL0PyFpWFxOKxzgCNjeCDtrHT8K/A8SpvgVGNBGhBtG2uh2hVuptcIJBBmWgA781iqOptuDA/c2NT8bb/ELnZW5ZTg1AfF7Qi4DdXGOWsLZUr1QJDiAI3g27mPmkGHNKo7Zs6ayPMk3TAUwy4LnchmO45rGNaYDHVi4OzyRobA2EaAxHVaeG4t7y4ZzfUmYdc/Qk6815+sS6AbEmJkkCxuYCcMq0aYAzeGIJYXQ4QRoRPw5KeK2meKwLgA5jwSS3NY5iCQDz0vpyHRS7AjM9hNz7ozSRqTvM6JeMeykMzXHxDKSGjTWAALaD4LvE8XbOcT1P7tPsFqcyM22tGGqtacrzYQB/j0B+CxcdxrSYkRmmbTMEESRYX06LC7ibmsI3c4+LUnQgjkREeaVurZqm8CYJEC/TYqp/bZXyuYZGwg7ie+gKz0wIgmRed40W0nwwIsQDJBkbeoXJYLxbp91ucs3orrnL4rwLfSL9vsszcQGk8jEc53CbV6IdM+uqQVyc8QcrdtP7VsxJdbqjLzt+dUnxZudk3w3EGs1aHzaHCQ23vRrPySXitYEmFfSFmJcsDgr6j1SVvEVoUlCzioQhSFAIQ4X1nrz+KFYBCEIOi/1ou6blUpWojZSrReTPa3x+PrTXSxA139fylQKtpvWg5yyLQrKFXI6CSB0FwOiwYTGOZIDvC4QRsRY/ZaBWm8x/CxY1KZYbGuEEmW+Z21WwkPMC+nl+EnJzAukXJkfxyRTqFplp/pS8qdHAOp+IXvbWb81soZgRfTXl6ukH/KVIg6HXfTS3RWYDiTmODg4yP3ETp0Wci+3qKFdoe5xfuAD+0Dnb8c0sx+LzVcrIJBIDgPCSLSDFwdR/KVU8ROYh0E/tj5jYfytWCpvYC5rs0iY1+HVSzVnoxweIfYF2swBzn1ZcvqPqAgXIHIRtI73CytxBfOc5Db9o5mNeya8OpUy0lz9AB7xHK4A8oScpaBSaAHHVsnUBvQAdktEOMB1zYgABoW/FYinBEgyS0Xknr/qYSTDnKewtK1iHIED12Vj60ddL/FYfbQJn3ogbd1m/VESJOuk68rdJK1IwYmqSsOMGYzJGk/lRhsTeJXdXfT8zy+C1+IU4luUfdKcTVzdEwxriJH35pNUcpI0peuV25VlVEFCgoWKqEIUgqCFKhCCUKFKoEIQgkLprouFwplblRfRqQtVOrzS9rlcyogYtcDou4hLm1CFeMQR1RdbKdfnf7qatUbBZva+XPkgVeYUxZWum8ix0PlfZbsFXggEnLaQOUylTXrtjoPdTF04xL6bn5gJ0aOnf1uptNgZEXB0Flkp12htzvr67q1jgG5w6Znw6bTcb6/JMZ13iarmxbrfVUHGC9tVlrVy+BoB9VHs40UVezE5QNzy2XNTF9FlqOjVctrBbkSt+Fr6kXNo7TdMP1DTqJGXXkeiTPYCAdJtbdMMFkZP/wBASWkXBmD1GkjzQYakEk3IvruluJhO+J1QALNBjRui89XdJRFT1WV25cFKIQhCwqEIQoBCEIBCEIBSoUoBChCuiUSoQmixryrG1lQhXUahXXbXhYlMrQYh/VS+r8EuDyuxWKi6YueAJBVX6wrIayrJRDClirqamKS9rl0XKi2pXJVbKq4KhUMqeNj8qp2N5LFKiUtGt+ILtSqS7qqsyMyz5QdPXChCzaoQhCgEIQgEIQgEIQgEIQgEIQgEIQgEIQgEIQglQhCAQhCCUSoQmiZRKhCu0TKhCFAIQhAIQhAIQhB//9k="
+                    alt="">
+                </div>
+              </div>
+              <span>Sentiment</span> <span class="pull-right"></span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
+                  aria-valuemax="100"></div>
+              </div>
+            </div>
+        
+            <div class="col-md-6">
+              <div class="title-box-2">
+                <h5 class="title-left">
+                  Description
+                </h5>
+              </div>
+              <p class="lead">
+                <%= dream.description %>
+              </p>
+            </div>
+            <% if (user) { %>
+              <a href="/dreams/new" class="btn btn-primary mb-2">Update this dream</a>
+            <form action="/dreams/<%= dream.id %>?_method=DELETE" id="delete-form" method="POST">
+              <button type="submit">Delete this dream</button>
+            </form>
+            <% } else { %>
+            <a href="/auth/google">Save dream by logging in with Google</a>
+            <% } %>
+          </div>
+        </div>
+     </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<%- include('../partials/footer') %>

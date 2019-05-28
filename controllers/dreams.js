@@ -6,6 +6,7 @@ module.exports = {
     create,
     show,
     delete: deleteDream,
+    update: updateDream,
 };
 
 function newDream(req, res) {
@@ -29,13 +30,16 @@ function index(req, res) {
 }
 
 function create(req, res) {
+    if (!req.body.hoursSlept) delete req.body.hoursSlept;
+    if (!req.body.date) delete req.body.date;
     req.body.user_id = req.user.id;
     var dream = new Dream(req.body);
     var Sentiment = require('sentiment');
     var sentiment = new Sentiment();
-    var currentSentiment = dream.description;
-    var result = sentiment.analyze(currentSentiment);
+    var result = sentiment.analyze(dream.description);
     dream.score = result.score;
+    dream.keyWords = result.words;
+    console.log(result.words );
     dream.save(function (err) {
         if (err) return res.render('/');
         res.redirect('/dreams');
@@ -43,18 +47,29 @@ function create(req, res) {
 }
 
 function show(req, res) {
-    Dream.findByIdAndDelete(req.params.id, function (err, addedDream) {
-        res.render('dreams/show', { title: 'Dream Details', dream });
-    });
+    Dream.findById(req.params.id)
+        .then(dream => {
+            res.render('dreams/show', { 
+                dream,
+                user: req.user, 
+            });
+        }).catch(err => console.log(err));
 }
-////is show doing anything??
-
 
 
 function deleteDream(req, res) {
-    Dream.findByIdAndDelete(req.params.id, function (err, deletedDream) {
-        res.redirect('/dreams');
-    });
+    Dream.findByIdAndDelete(req.params.id,
+        function (err, deletedDream) {
+            res.redirect('/dreams');
+        });
 }
 
 
+
+function updateDream(req, res) {
+    res.render('dreams/new', {
+        user: req.user,
+        title: 'Welcome to Reverie',
+        dreams: dreams,
+    });
+}

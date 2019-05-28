@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const dreamSchema = new mongoose.Schema({
 	user_id: String,
 	date: {
-		type: Number,
-		// default: () => Date.now() + (364 * 24 * 60 * 60 * 1000),
+		type: Date,
+		default: Date.now,
 	},
 	description: {
 		type: String,
@@ -12,8 +12,16 @@ const dreamSchema = new mongoose.Schema({
 	},
 	score: Number,
 	sentiment: String,
-	hoursSlept: Number,
-})
+	hoursSlept: {
+		type: Number,
+		default: 8, 
+	},
+	keyWords: [{
+		type: String,
+	}]
+}, {
+	timestamps: true,
+});
 
 var Dream = mongoose.model('Dream', dreamSchema);
 

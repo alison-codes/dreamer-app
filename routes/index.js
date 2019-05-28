@@ -5,7 +5,6 @@ const usersCtrl = require('../controllers/users');
 
 router.get('/', usersCtrl.index);
 
-
 //helper func for protecting pages
 router.get('/private', isLoggedIn, usersCtrl.privateView);
 

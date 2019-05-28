@@ -13,12 +13,10 @@ function index(req, res) {
     });
 }
 
-
 //below only accessible if logged in
 function privateView(req, res) {
     res.send("You found something private.");
 }
-
 
 // function showUser(req, res, next) {
 //     // res.render('users/show', {
