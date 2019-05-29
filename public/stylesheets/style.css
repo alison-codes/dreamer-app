@@ -141,6 +141,9 @@ footer {
   margin: .5rem 6rem 1.2rem 0;
 }
 
+.lead{
+  margin-right: 20px;
+}
 
 .dream-box {
   margin-bottom: 3rem;
@@ -172,7 +175,7 @@ img {
 }
 
 .dream-details {
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
 }
 
 .dream-more-details {
@@ -191,10 +194,56 @@ img {
   height: 5px;
   background-color: #0078ff;
   margin: 0 auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .col-sm-8{
   width: 100%;
   text-align: center;
+}
+
+time.icon{
+  display: block;
+  position: relative;
+  width: 7em;
+  height: 7em;
+  background-color: #fff;
+  margin: 2em auto;
+  border-radius: 0.6em;
+  box-shadow: 0 1px 0 #bdbdbd, 0 2px 0 #fff, 0 3px 0 #bdbdbd, 0 4px 0 #fff, 0 5px 0 #bdbdbd, 0 0 0 1px #bdbdbd;
+  overflow: hidden;
+}
+
+time.icon * {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+#day {
+  position: absolute;
+  top: 0;
+  padding: 0.4em 0;
+  color: #fff;
+  background-color: #7213c0;
+}
+
+#year {
+  position: absolute;
+  bottom: 0.3em;
+  color: #7213c0;
+}
+
+#month {
+  width: 100%;
+  font-size: 2.8em;
+  letter-spacing: -0.05em;
+  padding-top: 0.8em;
+}
+
+.key-words {
+  font-size: 14px;
 }

@@ -7,14 +7,19 @@ module.exports = {
     show,
     delete: deleteDream,
     update: updateDream,
+    edit,
 };
 
 function newDream(req, res) {
-    res.render('dreams/new', {
-        user: req.user,
-        title: 'Welcome to Reverie',
+    Dream.find(function (err, dreams) {
+        res.render('dreams/new', {
+            user: req.user,
+            title: 'Welcome to Reverie',
+            dream: req.body,
+        });
     });
 }
+
 
 function index(req, res) {
     var str = req.user.name
@@ -24,7 +29,7 @@ function index(req, res) {
             user: req.user,
             title: 'Welcome to Reverie',
             name: firstName,
-            dreams: dreams,
+            dreams,
         });
     });
 }
@@ -39,19 +44,20 @@ function create(req, res) {
     var result = sentiment.analyze(dream.description);
     dream.score = result.score;
     dream.keyWords = result.words;
-    console.log(result.words );
+    console.log(dream.keyWords);
     dream.save(function (err) {
         if (err) return res.render('/');
-        res.redirect('/dreams');
+        res.redirect('/dreams/');
     });
 }
+
 
 function show(req, res) {
     Dream.findById(req.params.id)
         .then(dream => {
-            res.render('dreams/show', { 
+            res.render('dreams/show', {
                 dream,
-                user: req.user, 
+                user: req.user,
             });
         }).catch(err => console.log(err));
 }
@@ -67,9 +73,35 @@ function deleteDream(req, res) {
 
 
 function updateDream(req, res) {
-    res.render('dreams/new', {
-        user: req.user,
-        title: 'Welcome to Reverie',
-        dreams: dreams,
-    });
+    // Dream.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, dream) => {
+    //     console.log(dream);
+    //     res.redirect(`/dreams/${dream._id}`);
+    //     user: req.user,
+    //     dream,
+    // });
 }
+
+function edit(req, res) {
+    // Dream.findById(req.params.id, (err, dream) => {
+    //     res.render("dreams/edit", {
+    //         user: req.user,
+    //         dream,
+    //     });
+    // });
+
+    Dream.update(
+        { _id: req.body.id, user_id: req.body.user.id }, {
+            $set: {
+                date: req.body.date,
+                description: req.body.description
+            }
+        }, function (err, dream) {
+            if (err) {
+                console.log(err);
+                res.send(500);
+            }
+            console.log("edited in db", dream);
+            res.send(200);
+        });
+}
+

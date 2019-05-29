@@ -8,6 +8,7 @@ const dreamSchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
+		min: [20, 'Description too short'],
 		required: true,
 	},
 	score: Number,
@@ -26,3 +27,5 @@ const dreamSchema = new mongoose.Schema({
 var Dream = mongoose.model('Dream', dreamSchema);
 
 module.exports = Dream;
+
+

@@ -1,17 +1,21 @@
 <%- include('../partials/header') %>
 
-<h1>Enter your dream details</h1>
- <div class="line"></div>
-<form action="/dreams" method="POST">
+<h1 id="center">Enter your dream details</h1>
+<div class="line"></div>
 
+<% if (user) { %>
+  <form action="/dreams" method="POST">
+<% } else { %>
+  <form id="new-user-dream" action="/auth/google" method="POST">
+<% } %>
   <div class="form-group">
     <label for="example-datetime-local-input">When did you have this dream?</label>
-    <input name="date" class="form-control" type="date" >
+    <input name="date" class="form-control" type="date">
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">What do you remember about it?</label>
-    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+    <textarea name="description" minlength="20" class="form-control"  id="exampleFormControlTextarea1" rows="4"></textarea>
   </div>
 
   <div class="form-group">
@@ -30,12 +34,14 @@
   </div>
   <% } %>
 
-  <% if (user) { %>
   <button type="submit" class="btn btn-primary mb-2">Log dream</button>
-  <% } else { %>
-  <a href="/dreams/<%= %>" class="btn btn-primary mb-2">Log dream</a>
-  <% } %>
 
 </form>
+
+<script>
+  let newUserDream = document.querySelector('#new-user-dream');
+
+  
+</script>
 
 <%- include('../partials/footer') %>
