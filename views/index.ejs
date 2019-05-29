@@ -5,10 +5,10 @@
       <p>During a typical lifetime, people <br>spend an average of six years dreaming.</p>
       <h1 id="landing-page-question">ARE YOU A DREAMER?</h1>
       <% if (user) { %>
-      <a href="/dreams/" class="btn btn-primary btn-large">Unlock your dreams</a>
+      <a href="/dreams/" class="btn btn-primary">Unlock your dreams</a>
       <% } else { %>
-      <a href="/dreams/new" class="btn btn-primary btn-large">Get Started With Reverie</a> 
-      <a href="/auth/google" class="btn btn-primary btn-large">Login</a> 
+      <a href="/dreams/new" class="btn btn-primary">Get Started With Reverie</a>
+      <a href="/auth/google" id="btn-login" class="btn">Login</a>
       <% } %>
     </div>
   </div>
@@ -19,7 +19,6 @@
       <p class='vjs-no-js'>
         To view this video please enable JavaScript, and consider upgrading to a web browser that
         <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-
     </video>
 </div>
 </section>

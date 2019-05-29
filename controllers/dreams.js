@@ -6,8 +6,8 @@ module.exports = {
     create,
     show,
     delete: deleteDream,
-    update: updateDream,
     edit,
+    update,
 };
 
 function newDream(req, res) {
@@ -47,7 +47,7 @@ function create(req, res) {
     console.log(dream.keyWords);
     dream.save(function (err) {
         if (err) return res.render('/');
-        res.redirect('/dreams/');
+        res.redirect('/dreams');
     });
 }
 
@@ -71,37 +71,21 @@ function deleteDream(req, res) {
 }
 
 
-
-function updateDream(req, res) {
-    // Dream.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, dream) => {
-    //     console.log(dream);
-    //     res.redirect(`/dreams/${dream._id}`);
-    //     user: req.user,
-    //     dream,
-    // });
+function edit(req, res) {
+    Dream.findById(req.params.id).exec(function (err, dream) {
+        res.render('dreams/edit', { 
+            dream, 
+            user: req.user,
+        });
+    });
 }
 
-function edit(req, res) {
-    // Dream.findById(req.params.id, (err, dream) => {
-    //     res.render("dreams/edit", {
-    //         user: req.user,
-    //         dream,
-    //     });
-    // });
-
-    Dream.update(
-        { _id: req.body.id, user_id: req.body.user.id }, {
-            $set: {
-                date: req.body.date,
-                description: req.body.description
-            }
-        }, function (err, dream) {
-            if (err) {
-                console.log(err);
-                res.send(500);
-            }
-            console.log("edited in db", dream);
-            res.send(200);
-        });
+function update(req, res) {
+    Dream.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, dream) {
+        if (err) {
+            console.log(err)
+        }
+        res.redirect(`/dreams`)
+    });
 }
 

@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+
+var castSchema = new mongoose.Schema({
+	castMember: String,
+}, {
+	timestamps: true,
+  });
+
 const dreamSchema = new mongoose.Schema({
 	user_id: String,
 	date: {
@@ -8,21 +15,22 @@ const dreamSchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
-		min: [20, 'Description too short'],
+		min: 20,
 		required: true,
 	},
 	score: Number,
 	sentiment: String,
 	hoursSlept: {
 		type: Number,
-		default: 8, 
+		default: 8,
 	},
 	keyWords: [{
 		type: String,
-	}]
+	}],
+	cast: [castSchema],
 }, {
-	timestamps: true,
-});
+		timestamps: true,
+	});
 
 var Dream = mongoose.model('Dream', dreamSchema);
 

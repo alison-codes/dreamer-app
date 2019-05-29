@@ -1,11 +1,12 @@
 <%- include('../partials/header') %>
 
+<section id="return-btn">
 <% if (user) { %>
-<a href="/dreams" class="btn btn-primary mb-2">Return to dream log</a>
+<a href="/dreams"  class="btn btn-primary">Return to dream log</a>
 <% } else { %>
 Logged out state!!!!
 <% } %>
-
+</section>
 
 
 
@@ -47,6 +48,44 @@ Logged out state!!!!
               </p>
             </div>
             <% if (user) { %>
+              <form  method="POST"
+              action="/dreams/<%= dream._id %>/cast">
+              <div class="form-group">
+                  <label for="exampleFormControlSelect1">Who was in your dream?</label>
+                  <select name="castMember" class="form-control" id="exampleFormControlSelect1">
+                    <option>Significant Other</option>
+                    <option>Pet</option>
+                    <option>Father</option>
+                    <option>Mother</option>
+                    <option>Coworker</option>
+                    <option>SEI Instructor</option>
+                  </select>
+                </div>
+                <% if (dream.cast.length) { %>
+                  <h5>Currently this dream:<h5></h5>
+                     <% dream.cast.forEach(function(c) { %>
+                    <table>
+                        <%= c.castMember %> 
+                    </table>
+
+                  <% }); %>
+               
+            <% } else { %>
+              <h5>No one was in your dream with you </h5>
+            <% } %>
+
+             <br> <input type="submit" value="Add Cast">
+            </form>
+        
+
+           
+
+
+
+
+
+
+
 
             <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="btn btn-primary mb-2">Update </a>
 
@@ -62,8 +101,9 @@ Logged out state!!!!
     </div>
   </div>
 
-</section>
+  
 
+</section>
 
 
 <%- include('../partials/footer') %>

@@ -15,6 +15,8 @@ require('./config/passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dreamsRouter = require('./routes/dreams');
+var castRouter = require('./routes/cast');
+
 
 var app = express();
 
@@ -40,6 +42,7 @@ app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/dreams', dreamsRouter);
+app.use('/', castRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 var userSchema = new mongoose.Schema({
   name: String,
   email: String,
-  googleId: String
+  googleId: String,
+  allCastMembers: [{
+		type: String,
+	}],
 }, {
     timestamps: true
   });
