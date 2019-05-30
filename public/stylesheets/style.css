@@ -1,3 +1,12 @@
+:root {
+  --dark-purple: #08012E;
+  --pale-blue: #BFD7EA;
+  --blackish-purple: #0B0013;  
+  --dim-gray: #69626D; 
+  --platinum-gray: #E7E7E7;
+  --bright-purple:  #7213c0;
+}
+
 body {
   padding: 50px 50px 0px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -6,7 +15,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: var(--bright-purple);
 }
 
 #page-container{
@@ -33,7 +42,9 @@ a {
   width: 110vw;
   background-image: url('../images/topography.png');
   border-top:gray 2px solid;
-}
+} 
+
+
 
 .subheading{
   padding: 40px 140px 40px -60px;
@@ -42,6 +53,21 @@ a {
 .navbar{
   font-family: 'Khand', sans-serif;
 }
+/* 
+.btn{
+  background-color: var(--pale-blue);
+} */
+
+.navbar-index{
+  font-family: 'Khand', sans-serif;
+  background-color:  rgb(8, 1, 46, 0.7);
+}
+
+.navbar-index:hover{
+  font-family: 'Khand', sans-serif;
+  background-color: var(--platinum-gray);
+}
+
 
 .landing-page{
   text-align: center;
@@ -55,7 +81,7 @@ a {
   z-index: 1;
   height: 750px;
   width: 110vw;
-  background: rgba(8, 1, 46, 0.678); 
+  background: rgba(8, 1, 46, 0.432); 
   background-repeat: repeat;
   position: absolute;
 }
@@ -107,10 +133,10 @@ a {
 }
 
 #btn-login:hover{
-  color:rgb(11, 0, 19);
+  color: var(--dark-purple);
   border-width: 2px;
   background-color:  white;
-  border-color: rgb(11, 0, 19);
+  border-color: var(--dark-purple);
 }
 
 .parallax {
@@ -128,7 +154,7 @@ footer {
   bottom: 0;
   position: relative;
   color: white;
-  background-color:rgb(11, 0, 19);
+  background-color: var(--blackish-purple);
   width: 100vw;
   margin-left: -50px;
   text-align: center;
@@ -143,12 +169,6 @@ footer {
 .title-left {
   font-size: 2rem;
   position: relative;
-}
-
-
-.progress {
-  background-color: #cde1f8;
-  margin: .5rem 6.8rem 1.2rem 0;
 }
 
 .lead{
@@ -203,7 +223,7 @@ img {
 .line {
   width: 80px;
   height: 5px;
-  background-color: #0078ff;
+  background-color: var(--pale-blue);
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -239,13 +259,13 @@ time.icon * {
   top: 0;
   padding: 0.4em 0;
   color: #fff;
-  background-color: #7213c0;
+  background-color: var(--bright-purple);
 }
 
 #year {
   position: absolute;
   bottom: 0.3em;
-  color: #7213c0;
+  color: var(--bright-purple);
 }
 
 #month {
@@ -260,8 +280,14 @@ time.icon * {
 }
 
 .cast-list{
-  margin: .5rem 6.8rem 1.2rem 0;
+  margin: .5rem 6.3rem 1.2rem 0;
 }
+
+.progress {
+  background-color: #cde1f8;
+  margin: .5rem 6.3rem 1.2rem 0;
+}
+
 
 .return-btn{
 text-align: center;
@@ -270,4 +296,48 @@ text-align: center;
 
 .full-description{
   margin-right: 50px;
+}
+
+.edit{
+ padding: 0.5rem;
+ display: inline-block;
+ border: none;
+ margin-right: 0px;
+ color: black;
+ border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+ border-style: solid;
+ border-width: 1px;
+ padding: 1px 7px 2px;
+}
+
+.edit:hover, .delete:hover {
+  text-decoration: none;
+  color:var(--bright-purple);
+  border-color: #7213c0
+}
+
+#x-btn{
+  color: var(--dim-gray);
+  background-color:var(--platinum-gray);
+  border-color: var(--platinum-gray);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+.delete{
+  padding: 0.5rem;
+  display: inline-block;
+  border: none;
+  margin-right: 0px;
+  color: black;
+ }
+ 
+ #delete-edit{
+   text-align: right;
+ }
+
+ #delete-form{
+  text-align: right;
+  padding: 8px 8px 0px 0px;
 }

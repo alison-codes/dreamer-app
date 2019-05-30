@@ -1,16 +1,25 @@
 <%- include('../partials/header') %>
 
-<section class="return-btn">
+<!-- <section class="return-btn">
   <% if (user) { %>
   <a href="/dreams" class="btn btn-primary">Return to dream log</a>
   <% } else { %>
-  Logged out state!!!!
+  <h1>Logged out state!!!!</h1>
   <% } %>
-</section>
+</section> -->
 
-
-<section id="details" class="about-mf sect-pt4 route">
+<br>
+<section id="details">
+  <div id="delete-edit"> 
+    <% if (user) { %>
+      <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="edit"> Edit </a>
+      <form action="/dreams/<%= dream.id %>?_method=DELETE" class="delete" method="POST">
+        <button type="submit">Delete</button>
+      </form>
+      <% } %>
+    </div>
   <h1 id="center">Analysis of dream</h1>
+  
   <div class="line"></div>
   <div class="container">
 
@@ -52,15 +61,20 @@
                 </table>
                 <% } %>
                 <div class="form-group">
-                  <!-- <label for="exampleFormControlSelect1">Who was in your dream?</label> -->
                   <input autocomplete="off" type="text" list="cast" name="castMember" class="form-control"
                     id="exampleFormControlSelect1" />
                   <datalist id="cast">
-                    <% if (dream.cast.length) { %>
-                    <% dream.cast.forEach(function(c) { %>
-                    <option><%= c.castMember %></option>
+                    <% if (user.allCastMembers.length) { %>
+              
+                      <% user.allCastMembers.forEach(function(c) { %>
+                    <option><%= c %></option>
+                    <option>Significant Other</option>
+                    <option>Pet</option>
+                  </datalist>
+                </div>
+                <input type="submit" value="Add people to this dream">
                     <% }); %>
-                    <% } %>
+                    <% } else { %>
                     <option>Significant Other</option>
                     <option>Pet</option>
                     <option>Father</option>
@@ -69,7 +83,8 @@
                     <option>SEI Instructor</option>
                   </datalist>
                 </div>
-                <input type="submit" value="Add person to dream">
+                <input type="submit" value="Add who was in your dream">
+                <% } %>
               </form>
             </div>
 
@@ -83,25 +98,43 @@
                 <%= dream.description %>
               </p>
             </div>
-
-            <section class="return-btn">
-              <% if (user) { %>
-              <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="btn btn-primary mb-2">Update </a>
-
-              <form action="/dreams/<%= dream.id %>?_method=DELETE" id="delete-form" method="POST">
-                <button type="submit">Delete this dream</button>
-              </form>
-              <% } else { %>
-              <a href="/auth/google">Save dream by logging in with Google</a>
-              <% } %>
-            </section>
           </div>
         </div>
       </div>
+    
     </div>
   </div>
+  <!-- <section class="return-btn">
+      <% if (user) { %>
+      <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="btn btn-primary mb-2">Update </a>
+      <% } else { %>
+      <a href="/auth/google">Save dream by logging in with Google</a>
+      <% } %>
+    </section>
+    <br> -->
 
 
-
+<section class="return-btn">
+    <% if (user) { %>
+    <a href="/dreams" class="btn btn-primary">Return to dream log ☁ 🌙</a>
+    <% } else { %>
+    <h1>Logged out state!!!!</h1>
+    <% } %>
+  </section>
+  
 </section>
+
+
+<!-- <br>
+<section class="return-btn">
+    <% if (user) { %>
+    <a href="/dreams" class="btn btn-primary">Return to dream log ☁ 🌙</a>
+    <% } else { %>
+    <h1>Logged out state!!!!</h1>
+    <% } %>
+  </section>
+   -->
+
+
+
 <%- include('../partials/footer') %>

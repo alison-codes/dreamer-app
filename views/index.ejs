@@ -1,4 +1,51 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>REVERIE </title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link href="https://fonts.googleapis.com/css?family=Armata|Khand&display=swap" rel="stylesheet">
+    <script defer src="/javascripts/jquery.min.js"></script>
+    <script defer src="/javascripts/bootstrap.min.js"></script>
+    <link href="https://vjs.zencdn.net/7.5.4/video-js.css" rel="stylesheet">
+    <script defer src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+</head>
+
+<body>
+
+    <main id="page-container">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-custom navbar-index">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">REVERIE </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li>
+                            <% if (user) { %>
+                            <a href="/logout">Log Out</a>
+                            <% } else { %>
+                            <a href="/auth/google">Login with Google</a>
+                            <% } %>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 <div class="landing-page">
   <div id="tint">
     <div id="landing-page-text">
@@ -15,7 +62,7 @@
   <section id="home">
     <video id='my-video' class='video-js' loop controls muted="muted" autoplay poster='MY_VIDEO_POSTER.jpg'
       data-setup='{}'>
-      <source src='/videos/people-walking.mp4' type='video/mp4'>
+      <source src='/videos/nebula.mp4' type='video/mp4'>
       <p class='vjs-no-js'>
         To view this video please enable JavaScript, and consider upgrading to a web browser that
         <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
@@ -26,7 +73,8 @@
 <a name="about"></a>
 <section class="parallax" data-stellar-background-ratio="0.3" id="bottom-section">
   <div class="subheading">
-    <h2><br>Our brain is an incredibly creative problem solver. </h2>
+    
+    <h2><br> Our brain is an incredibly creative problem solver. </h2>
     <br>
     <h5>
       Sleep is where some of humanity’s most incredible creations got their start: Electricity, Frankenstein’s monster,
@@ -43,17 +91,20 @@
       We want to help you track, analyze, and unlock your dreams so you can produce humanity's next great creation.
       <br><br>
       <% if (user) { %>
-      <a href="/dreams/" class="btn btn-primary btn-subheading">View your dream log</a>
+      <a href="/dreams/" class="btn btn-primary btn-subheading">View your dream log ☁ 🌙</a>
       <% } else { %>
-      <a href="/dreams/new" class="btn btn-primary btn-subheading">Log your first dream</a>
+      <a href="/dreams/new" class="btn btn-primary btn-subheading">Log your first dream ☁ 🌙</a>
       <% } %>
     </h5>
-    <p id="quote">"A dream you dream alone is only a dream. A dream you dream together is reality." ― John Lennon
+    
+    <p id="quote"> "A dream you dream alone is only a dream. A dream you dream together is reality." ― John Lennon
     </p>
   </div>
 </section>
 
 </main>
 </body>
+
+
 
 </html>

@@ -15,7 +15,7 @@ router.get('/auth/google', passport.authenticate(
 
 router.post('/auth/google', passport.authenticate(
   'google',
-  { scope: ['profile', 'email'] }
+  { scope: ['profile', 'email'] },
 ));
 
 router.get('/dreamerAppCallback', passport.authenticate(
