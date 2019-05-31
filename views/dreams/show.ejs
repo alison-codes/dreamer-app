@@ -1,48 +1,57 @@
 <%- include('../partials/header') %>
-
-<!-- <section class="return-btn">
-  <% if (user) { %>
-  <a href="/dreams" class="btn btn-primary">Return to dream log</a>
-  <% } else { %>
-  <h1>Logged out state!!!!</h1>
-  <% } %>
-</section> -->
-
 <br>
 <section id="details">
-  <div id="delete-edit"> 
+  <div id="delete-edit">
     <% if (user) { %>
-      <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="edit"> Edit </a>
-      <form action="/dreams/<%= dream.id %>?_method=DELETE" class="delete" method="POST">
-        <button type="submit">Delete</button>
-      </form>
-      <% } %>
-    </div>
+    <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="edit"> Edit </a>
+    <form action="/dreams/<%= dream.id %>?_method=DELETE" class="delete" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+    <% } %>
+  </div>
   <h1 id="center">Analysis of dream</h1>
-  
   <div class="line"></div>
   <div class="container">
-
     <time class="icon">
       <div id="year"><%= (dream.date ).toString().slice(10, 16) %></div>
       <div id="day"> <%= (dream.date ).toString().slice(4, 8) %></div>
       <div id="month"><%= (dream.date ).toString().slice(8, 10) %></div>
     </time>
     <div class="row">
+
+
+
+
+      
       <div class="col-sm-12">
         <div class="box-shadow-full">
           <div class="row">
             <div class="col-md-6">
               <div class="row">
                 <div class="col-sm-6 col-md-5">
-
                 </div>
               </div>
               <span>Sentiment</span> <span class="pull-right"></span>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                  aria-valuemax="100"></div>
+              <% if (dream.score > 0.4) { %>
+                <span id="postive">Positive
+                  <% } else if (dream.score < -0.3){ %>
+                  <span id="negative"> Negative
+                    <% } else  { %>
+                    <span id="neutral">Neutral
+                      <% } %> </span>
+               <canvas id="dream-plot-chart" width="150" height="80"></canvas>
+              
+              
+            </div>
+            <div class="col-md-6">
+              <div class="full-description">
+                <h5 class="title-left">
+                  Description
+                </h5>
               </div>
+              <p class="lead">
+                <%= dream.description %>
+              </p>
               <form class="cast-list" method="POST" action="/dreams/<%= dream._id %>/cast">
                 <% if (dream.cast.length) { %>
                 <table class="table">
@@ -62,17 +71,11 @@
                 <% } %>
                 <div class="form-group">
                   <input autocomplete="off" type="text" list="cast" name="castMember" class="form-control"
-                    id="exampleFormControlSelect1" />
+                    id="exampleFormControlSelect1" placeholder="Who was in your dream?" />
                   <datalist id="cast">
                     <% if (user.allCastMembers.length) { %>
-              
-                      <% user.allCastMembers.forEach(function(c) { %>
-                    <option><%= c %></option>
-                    <option>Significant Other</option>
-                    <option>Pet</option>
-                  </datalist>
-                </div>
-                <input type="submit" value="Add people to this dream">
+                    <% user.allCastMembers.forEach(function(c) { %>
+                    <option><%= c.castMember %></option>
                     <% }); %>
                     <% } else { %>
                     <option>Significant Other</option>
@@ -81,60 +84,57 @@
                     <option>Mother</option>
                     <option>Coworker</option>
                     <option>SEI Instructor</option>
+                    <% } %>
                   </datalist>
                 </div>
-                <input type="submit" value="Add who was in your dream">
-                <% } %>
+                <input id="right" type="submit" value="Add +">
               </form>
-            </div>
-
-            <div class="col-md-6">
-              <div class="full-description">
-                <h5 class="title-left">
-                  Description
-                </h5>
-              </div>
-              <p class="lead">
-                <%= dream.description %>
-              </p>
             </div>
           </div>
         </div>
       </div>
-    
+
     </div>
   </div>
-  <!-- <section class="return-btn">
-      <% if (user) { %>
-      <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="btn btn-primary mb-2">Update </a>
-      <% } else { %>
-      <a href="/auth/google">Save dream by logging in with Google</a>
-      <% } %>
-    </section>
-    <br> -->
-
-
-<section class="return-btn">
+  <section class="return-btn">
     <% if (user) { %>
     <a href="/dreams" class="btn btn-primary">Return to dream log ☁ 🌙</a>
     <% } else { %>
     <h1>Logged out state!!!!</h1>
     <% } %>
   </section>
-  
 </section>
 
 
-<!-- <br>
-<section class="return-btn">
-    <% if (user) { %>
-    <a href="/dreams" class="btn btn-primary">Return to dream log ☁ 🌙</a>
-    <% } else { %>
-    <h1>Logged out state!!!!</h1>
-    <% } %>
-  </section>
-   -->
-
-
+<script>
+    var ctx2 = document.getElementById('dream-plot-chart').getContext('2d');
+    var myChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Your dream', 'Average Reverie user dream'],
+      datasets: [ {
+      label: 'Positivity score',
+      data: [<%= (dream.score) %>, 2.2],
+      backgroundColor: [
+        'rgba(159, 215, 234, 1)',
+      ],
+      borderColor: [
+        'rgba(159, 200, 234, 1.9)',
+      ],
+      borderWidth: 1,
+      },
+    ]
+        },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+    });
+  </script>
 
 <%- include('../partials/footer') %>

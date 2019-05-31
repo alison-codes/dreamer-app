@@ -90,7 +90,10 @@ h5{
 
 
 #btn-edit{
-  background-color:var(--platinum-gray);
+  background-color:var(--medium-purple);
+  border: var(--medium-purple);
+  color: white;
+  margin-left: 0px;
 }
 
 #tint {
@@ -220,6 +223,8 @@ img {
   border-radius: 40px;
 }
 
+
+
 #center{
   text-align: center;
 }
@@ -299,7 +304,7 @@ time.icon * {
 }
 
 .cast-list{
-  margin: .5rem 6.3rem 1.2rem 0;
+  margin: 3rem 6.3rem 1.2rem 0;
 }
 
 .progress {
@@ -364,4 +369,25 @@ text-align: center;
 
 #first-dream{
   margin-right: 50vw;
+  border-radius: 12px;
+  color: #fff;
+  border-width: 2px;
+  margin: 10px;
+}
+
+#cal:hover  {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+#negative {
+  color: rgb(99, 4, 17);
+}
+
+#postive  {
+  color: #29979b;
+}
+
+#neutral  {
+  color:var(--dim-gray);
 }

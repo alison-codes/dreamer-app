@@ -21,9 +21,7 @@ function newDream(req, res) {
     });
 }
 
-
 function index(req, res) {
-    console.log( req.session.name)
     var str = req.user.name;
     var firstName = str.substr(0, str.indexOf(' '));
     Dream.find({ user_id: req.user.id }, function (err, dreams) {
@@ -37,8 +35,6 @@ function index(req, res) {
 }
 
 function create(req, res) {
-    req.session.name = 'Napoleon';
-   
     if (!req.body.hoursSlept) delete req.body.hoursSlept;
     if (!req.body.date) delete req.body.date;
     req.body.user_id = req.user.id;
@@ -48,7 +44,6 @@ function create(req, res) {
     var result = sentiment.analyze(dream.description);
     dream.score = result.score;
     dream.keyWords = result.words;
-    console.log(dream.keyWords);
     dream.save(function (err) {
         if (err) return res.render('/');
         res.redirect('/dreams');
