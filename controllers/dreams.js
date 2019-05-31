@@ -11,6 +11,7 @@ module.exports = {
 };
 
 function newDream(req, res) {
+    console.log()
     Dream.find(function (err, dreams) {
         res.render('dreams/new', {
             user: req.user,
@@ -22,7 +23,8 @@ function newDream(req, res) {
 
 
 function index(req, res) {
-    var str = req.user.name
+    console.log( req.session.name)
+    var str = req.user.name;
     var firstName = str.substr(0, str.indexOf(' '));
     Dream.find({ user_id: req.user.id }, function (err, dreams) {
         res.render('dreams/', {
@@ -35,6 +37,8 @@ function index(req, res) {
 }
 
 function create(req, res) {
+    req.session.name = 'Napoleon';
+   
     if (!req.body.hoursSlept) delete req.body.hoursSlept;
     if (!req.body.date) delete req.body.date;
     req.body.user_id = req.user.id;
@@ -73,15 +77,15 @@ function deleteDream(req, res) {
 
 function edit(req, res) {
     Dream.findById(req.params.id).exec(function (err, dream) {
-        res.render('dreams/edit', { 
-            dream, 
+        res.render('dreams/edit', {
+            dream,
             user: req.user,
         });
     });
 }
 
 function update(req, res) {
-    Dream.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, dream) {
+    Dream.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, dream) {
         if (err) {
             console.log(err)
         }
