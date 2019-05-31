@@ -8,11 +8,13 @@
     <input name="date" class="form-control" type="date"
       value="<%= dream.date.getFullYear() %>-0<%=  dream.date.getMonth() + 1 %>-<%= (dream.date).toString().slice(8, 10) %>">
   </div>
+  
   <div class="form-group">
     <label>How many total hours did you sleep?</label>
     <input class="form-control" name="hoursSlept" min="0.25" max="24" type="number" step="0.25" value="<%= dream.hoursSlept %>"
       id="example-number-input">
   </div>
+
   <div class="form-group">
     <label for="exampleFormControlTextarea1">What do you remember about the dream?</label>
     <textarea name="description" required minlength="20" class="form-control" id="exampleFormControlTextarea1" required
