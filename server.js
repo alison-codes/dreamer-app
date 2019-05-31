@@ -60,4 +60,18 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+app.get('/', function (req, res) {
+ 
+  // simple count for the session
+  if (!req.session.count) {
+      req.session.count = 0;
+  }
+  req.session.count += 1;
+
+  // respond with the session object
+  res.json(req.session);
+
+});
+
 module.exports = app;
+
