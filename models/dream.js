@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 var castSchema = new mongoose.Schema({
 	castMember: String,
 }, {
@@ -23,6 +22,8 @@ const dreamSchema = new mongoose.Schema({
 	hoursSlept: {
 		type: Number,
 		default: 8,
+		min: 0.25,
+		max: 24,
 	},
 	keyWords: [{
 		type: String,
