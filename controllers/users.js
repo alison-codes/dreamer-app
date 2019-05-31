@@ -12,7 +12,6 @@ function index(req, res) {
     });
 }
 
-//below only accessible if logged in
 function privateView(req, res) {
     res.send("You found something private.");
 }
