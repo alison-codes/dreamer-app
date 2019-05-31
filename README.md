@@ -1,14 +1,15 @@
 # Reverie Dream Tracking App
-[Access here.](https://dreamer-app.herokuapp.com/)
 
 ## Overview
  Reverie is an interactive application enabling users to track their sleep patterns, uncover the meaning of their dreams, and view an overall sentiment based on keyword analysis.
 
-![Landing Page](https://imgur.com/A3Z0RPT) "Are you a dreamer?")
+ [Try it out here.](https://dreamer-app.herokuapp.com/)
 
-[Profile page](https://i.imgur.com/fT1r6Pk.png)
+![Landing Page](https://imgur.com/7RLR6fH "Are you a dreamer?")
 
-[Dream analysis page](https://i.imgur.com/qrNmNAu.png)
+[Profile page](https://imgur.com/fT1r6Pk)
+
+[Dream analysis page](https://imgur.com/qrNmNAu)
 
 ## Technologies Used
   * Languages - HTML5, Javascript
@@ -19,7 +20,7 @@
 
 
 ## Future Development
-  * Ability to add emojis to describe dreams
-  * Plot dream trends over time
+  * Plot dream trends over time in greater detail
+  * Ability to add emojis to describe dreams; emoji sentiment would be analyzed
   * Save form data via req.session to be retrieved after authentication
   * Update models without requiring a full-page refresh
