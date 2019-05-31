@@ -5,11 +5,14 @@
 
  [Try it out here.](https://dreamer-app.herokuapp.com/)
 
-![Landing Page](https://imgur.com/7RLR6fH "Are you a dreamer?")
 
-[Profile page](https://imgur.com/fT1r6Pk)
+## Screenshots
+![Landing Page](https://i.imgur.com/7RLR6fH.png "Are you a dreamer?")
 
-[Dream analysis page](https://imgur.com/qrNmNAu)
+![Profile Page](https://i.imgur.com/fT1r6Pk.png)
+
+![Dream Analysis Page](https://i.imgur.com/qrNmNAu.png)
+
 
 ## Technologies Used
   * Languages - HTML5, Javascript
