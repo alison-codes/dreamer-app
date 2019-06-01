@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var mongoose = require('mongoose');
 var passport = require('passport');
 var methodOverride = require('method-override');
+var mongoStore = require('connect-mongo')(session);
 
 require('dotenv').config();
 
@@ -32,7 +34,13 @@ app.use(session({
   secret: 'sausalitoqwerty',
   resave: false,
   saveUninitialized: true,
+  store: new mongoStore({ mongooseConnection: mongoose.connection }),
+  cookie: { maxAge: 180 * 60 * 1000 },
 }));
+
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 

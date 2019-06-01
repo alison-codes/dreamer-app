@@ -35,6 +35,7 @@ function index(req, res) {
 }
 
 function create(req, res) {
+    req.session.description = { 'id': 123 }; 
     if (!req.body.hoursSlept) delete req.body.hoursSlept;
     if (!req.body.date) delete req.body.date;
     req.body.user_id = req.user.id;
