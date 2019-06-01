@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 var castSchema = new mongoose.Schema({
 	castMember: String,
@@ -10,7 +11,8 @@ const dreamSchema = new mongoose.Schema({
 	user_id: String,
 	date: {
 		type: Date,
-		default: Date.now,
+		default:function() {
+            return new Date(moment().add(0, 'years').format());},
 	},
 	description: {
 		type: String,
