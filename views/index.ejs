@@ -2,110 +2,104 @@
 <html>
 
 <head>
-    <title>REVERIE </title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css'>
-    <link href="/images/sleeping-in-bed-icon.png" rel="shortcut icon" type="image/png">
-    <link href="https://fonts.googleapis.com/css?family=Armata|Khand&display=swap" rel="stylesheet">
-    <script defer src="/javascripts/jquery.min.js"></script>
-    <script defer src="/javascripts/bootstrap.min.js"></script>
-    <link href="https://vjs.zencdn.net/7.5.4/video-js.css" rel="stylesheet">
-    <script defer src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+  <title>REVERIE </title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+  <link href="https://vjs.zencdn.net/7.5.4/video-js.css" rel="stylesheet">
+  <link href="/images/sleeping-in-bed-icon.png" rel="shortcut icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css?family=Armata|Khand&display=swap" rel="stylesheet">
+  <script defer src="/javascripts/jquery.min.js"></script>
+  <script defer src="/javascripts/bootstrap.min.js"></script>
+  <script defer src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 </head>
 
 <body>
+  <main id="page-container">
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom navbar-index">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">REVERIE </a>
+        </div>
 
-    <main id="page-container">
-        <nav class="navbar navbar-default navbar-fixed-top navbar-custom navbar-index">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">REVERIE </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/#about">About</a></li>
-                        <li>
-                            <% if (user) { %>
-                            <a href="/logout">Log Out</a>
-                            <% } else { %>
-                            <a href="/auth/google">Login with Google</a>
-                            <% } %>
-                        </li>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-<div class="landing-page">
-  <div id="tint">
-    <div id="landing-page-text">
-      <p>During a typical lifetime, people <br>spend an average of six years dreaming.</p>
-      <h1 id="landing-page-question">ARE YOU A DREAMER?</h1>
-      <% if (user) { %>
-      <a href="/dreams/" class="btn btn-primary">Unlock your dreams</a>
-      <% } else { %>
-      <a href="/dreams/new" class="btn btn-primary">Get Started With Reverie</a>
-      <a href="/auth/google" id="btn-login" class="btn">Login</a>
-      <% } %>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li>
+              <% if (user) { %>
+              <a href="/logout">Log Out</a>
+              <% } else { %>
+              <a href="/auth/google">Login with Google</a>
+              <% } %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="landing-page">
+      <div id="tint">
+        <div id="landing-page-text">
+          <p>During a typical lifetime, people <br>spend an average of six years dreaming.</p>
+          <h1 id="landing-page-question">ARE YOU A DREAMER?</h1>
+          <% if (user) { %>
+          <a href="/dreams/" class="btn btn-primary">Unlock your dreams</a>
+          <% } else { %>
+          <a href="/dreams/new" class="btn btn-primary">Get Started With Reverie</a>
+          <a href="/auth/google" id="btn-login" class="btn">Login</a>
+          <% } %>
+        </div>
+      </div>
+      <section id="home">
+        <video id="my-video" class="video-js" loop controls muted="muted" autoplay poster="/images/nebula-img.png"
+          data-setup="{}">
+          <source src="/videos/nebula-video.mp4" type="video/mp4">
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </video>
     </div>
-  </div>
-  <section id="home">
-    <video id='my-video' class='video-js' loop controls muted="muted" autoplay poster='/images/nebula-img.png'
-      data-setup='{}'>
-      <source src='/videos/nebula-video.mp4' type='video/mp4'>
-      <p class='vjs-no-js'>
-        To view this video please enable JavaScript, and consider upgrading to a web browser that
-        <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-    </video>
-</div>
-</section>
+    </section>
 
-<a name="about"></a>
-<section class="parallax" data-stellar-background-ratio="0.3" id="bottom-section">
-  <div class="subheading">
-    
-    <h2><br> Our brain is an incredibly creative problem solver. </h2>
-    <br>
-    <h5>
-      Sleep is where some of humanity’s most incredible creations got their start. Google, Electricity, Frankenstein’s monster,
-      nonviolent resistance, laser technology were just a few of the ideas conceived in
-      dreams.<br><br>The sleeping brain is freed of constraints and can thus create whole sequences of free
-      associations.
-      Dreams not only replay memory fragments but also create brand-new, highly creative mixtures of memories and
-      knowledge.
-      <br><br>
-      Reverie leverages the Sentiment API, developed by Andrew Sliwinski at the MIT Media Lab, a Node.js module that
-      uses the AFINN-165 wordlist and Emoji Sentiment Ranking
-      to perform sentiment analysis.
-      <br><br>
-      We want to help you track, analyze, and unlock your dreams so you can produce humanity's next great creation.
-      <br><br>
-      <% if (user) { %>
-      <a href="/dreams/" id="btn-landing" class="btn btn-primary btn-subheading">View your dream log ☁ 🌙</a>
-      <% } else { %>
-      <a href="/dreams/new" id="btn-landing" class="btn btn-primary btn-subheading">Log your first dream ☁ 🌙</a>
-      <% } %>
-    </h5>
-    
-    <p id="quote"> "A dream you dream alone is only a dream. A dream you dream together is reality." ― John Lennon
-    </p>
-  </div>
-</section>
+    <a id="about"></a>
+    <section class="parallax" data-stellar-background-ratio="0.3" id="bottom-section">
+      <div class="subheading">
+        <h2><br> Our brain is an incredibly creative problem solver. </h2>
+        <br>
+        <h5>
+          Sleep is where some of humanity’s most incredible creations got their start. Google, Electricity,
+          Frankenstein’s monster,
+          nonviolent resistance, laser technology were just a few of the ideas conceived in
+          dreams.<br><br>The sleeping brain is freed of constraints and can thus create whole sequences of free
+          associations.
+          Dreams not only replay memory fragments but also create brand-new, highly creative mixtures of memories and
+          knowledge.
+          <br><br>
+          Reverie leverages the Sentiment API, developed by Andrew Sliwinski at the MIT Media Lab, a Node.js module that
+          uses the AFINN-165 wordlist and Emoji Sentiment Ranking
+          to perform sentiment analysis.
+          <br><br>
+          We want to help you track, analyze, and unlock your dreams so you can produce humanity's next great creation.
+          <br><br>
+          <% if (user) { %>
+          <a href="/dreams/" id="btn-landing" class="btn btn-primary btn-subheading">View your dream log ☁ 🌙</a>
+          <% } else { %>
+          <a href="/dreams/new" id="btn-landing" class="btn btn-primary btn-subheading">Log your first dream ☁ 🌙</a>
+          <% } %>
+        </h5>
+        <p id="quote"> "A dream you dream alone is only a dream. A dream you dream together is reality." ― John Lennon
+        </p>
+      </div>
+    </section>
 
-</main>
+  </main>
 </body>
-
-
 
 </html>

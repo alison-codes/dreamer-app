@@ -1,4 +1,5 @@
 const Dream = require('../models/dream');
+const moment = require('moment');
 
 module.exports = {
     new: newDream,
@@ -43,6 +44,7 @@ function create(req, res) {
     var Sentiment = require('sentiment');
     var sentiment = new Sentiment();
     var result = sentiment.analyze(dream.description);
+    if (req.body.date)  dream.dayOfWeek = moment(req.body.date).format('dddd');
     dream.score = result.score;
     dream.keyWords = result.words;
     dream.save(function (err) {

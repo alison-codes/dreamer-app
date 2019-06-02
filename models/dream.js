@@ -14,6 +14,11 @@ const dreamSchema = new mongoose.Schema({
 		default:function() {
             return new Date(moment().add(0, 'years').format());},
 	},
+	dayOfWeek: {
+		type: String,
+		default: function() {
+            return moment().format('dddd');},
+	},
 	description: {
 		type: String,
 		min: 20,

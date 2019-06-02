@@ -1,4 +1,4 @@
-<%- include('../partials/header') %>
+<%- include("../partials/header") %>
 
 <section id="dream-item" class="container">
   <div class="row">
@@ -70,29 +70,29 @@
 </section>
 
 <script>
-  var ctx2 = document.getElementById('dream-plot-chart').getContext('2d');
+  var ctx2 = document.getElementById("dream-plot-chart").getContext("2d");
   var myChart = new Chart(ctx2, {
-    type: 'line',
+    type: "line",
     data: {
       labels: [<% dreams.forEach(function (d) {  %><%= ((d.date).getMonth() + 1) %><%= ((d.date).getDate()) %>,<% }); %>],
     datasets: [{
-      label: 'Hours slept',
-      data: [<% dreams.forEach(function (d) {  %><%= (d.hoursSlept) %>,<% }); %>],
+      label: "Hours slept",
+      data: [<% dreams.forEach(function (d) { %><%= d.hoursSlept %>,<% }); %>],
     backgroundColor: [
-      'rgba(33, 1, 84, 0.6)',
+      "rgba(33, 1, 84, 0.6)",
     ],
     borderColor: [
-      'rgba(33, 1, 84, 0.7)',
+      "rgba(33, 1, 84, 0.7)",
     ],
     borderWidth: 1,
   }, {
-    label: 'Positivity score',
-    data: [<% dreams.forEach(function (d) {  %><%= (d.score) %>,<% }); %>],
+    label: "Positivity score",
+    data: [<% dreams.forEach(function (d) {  %><%= d.score %>,<% }); %>],
     backgroundColor: [
-      'rgba(159, 215, 234, 1)',
+      "rgba(159, 215, 234, 1)",
     ],
     borderColor: [
-      'rgba(159, 200, 234, 1.9)',
+      "rgba(159, 200, 234, 1.9)",
     ],
     borderWidth: 1,
     },
@@ -103,4 +103,5 @@
   });
 </script>
 
-<%- include('../partials/footer') %>
+<!-- labels: ["<% dreams.forEach(function (d) {  %><%= (d.dayOfWeek) %>",<% }); %>], -->
+<%- include("../partials/footer") %>

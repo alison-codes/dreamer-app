@@ -6,7 +6,7 @@
     <% if (user) { %>
     <a href="/dreams/<%= dream.id%>/edit?_method=EDIT" class="edit"> Edit </a>
     <form action="/dreams/<%= dream.id %>?_method=DELETE" class="delete" method="POST">
-      <button type="submit">Delete</button>
+      <button type="submit"> Delete</button>
     </form>
     <% } %>
   </div>
@@ -20,74 +20,79 @@
     </time>
     <div class="row">
       <div class="col-sm-12">
-        <div class="box-shadow-full">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-sm-6 col-md-5">
-                </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-sm-6 col-md-5">
               </div>
-              <span>Sentiment</span> <span class="pull-right"></span>
-              <% if (dream.score > 0.4) { %>
-              <span id="postive">Positive
-                <% } else if (dream.score < -0.3){ %>
-                <span id="negative"> Negative
-                  <% } else  { %>
-                  <span id="neutral">Neutral
-                    <% } %> </span>
-                  <canvas id="dream-plot-chart" width="150" height="80"></canvas>
             </div>
-            <div class="col-md-6">
-              <div class="full-description">
-                <h5 class="title-left">
-                  Description
-                </h5>
+
+            <section>
+              <span
+                data-tooltip="A sentiment analysis has been performed on the dream description you enterd. 
+                This analysis attempts to determine the overall attitude (positive, negative, or neutral) and is represented by numerical score. ">
+                <span class="bold"> Sentiment</span>
+                <% if (dream.score > 0.4) { %>
+                <span class="bold" id="postive">Positive
+                  <% } else if (dream.score < -0.3){ %>
+                  <span class="bold" id="negative"> Negative
+                    <% } else  { %>
+                    <span class="bold" id="neutral">Neutral
+                      <% } %> </span></span>
+            </section> 
+            <canvas id="dream-plot-chart" width="150" height="80"></canvas>
+          </div>
+          <div class="col-md-6">
+            <div class="full-description">
+              <h5 class="title-left">
+                Description
+              </h5>
+            </div>
+            <p class="lead">
+              <%= dream.description %>
+            </p>
+            <form class="cast-list" method="POST" action="/dreams/<%= dream._id %>/cast">
+              <% if (dream.cast.length) { %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase" scope="col"><b>Currently this dream:</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% dream.cast.forEach(function(c) { %>
+                  <tr>
+                    <td> <%= c.castMember %></td>
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+              <% } %>
+              <div class="form-group">
+                <input autocomplete="off" type="text" list="cast" name="castMember" class="form-control"
+                  id="exampleFormControlSelect1" placeholder="Who was in your dream?" />
+                <datalist id="cast">
+                  <% if (user.allCastMembers.length) { %>
+                  <% user.allCastMembers.forEach(function(c) { %>
+                  <option><%= c.castMember %></option>
+                  <% }); %>
+                  <% } else { %>
+                  <option>Significant Other</option>
+                  <option>Pet</option>
+                  <option>Father</option>
+                  <option>Mother</option>
+                  <option>Coworker</option>
+                  <option>SEI Instructor</option>
+                  <% } %>
+                </datalist>
               </div>
-              <p class="lead">
-                <%= dream.description %>
-              </p>
-              <form class="cast-list" method="POST" action="/dreams/<%= dream._id %>/cast">
-                <% if (dream.cast.length) { %>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase" scope="col"><b>Currently this dream:</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% dream.cast.forEach(function(c) { %>
-                    <tr>
-                      <td> <%= c.castMember %></td>
-                    </tr>
-                    <% }); %>
-                  </tbody>
-                </table>
-                <% } %>
-                <div class="form-group">
-                  <input autocomplete="off" type="text" list="cast" name="castMember" class="form-control"
-                    id="exampleFormControlSelect1" placeholder="Who was in your dream?" />
-                  <datalist id="cast">
-                    <% if (user.allCastMembers.length) { %>
-                    <% user.allCastMembers.forEach(function(c) { %>
-                    <option><%= c.castMember %></option>
-                    <% }); %>
-                    <% } else { %>
-                    <option>Significant Other</option>
-                    <option>Pet</option>
-                    <option>Father</option>
-                    <option>Mother</option>
-                    <option>Coworker</option>
-                    <option>SEI Instructor</option>
-                    <% } %>
-                  </datalist>
-                </div>
-                <input id="right" type="submit" value="Add +">
-              </form>
-            </div>
+              <input id="right" type="submit" value="Add +">
+            </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <section class="return-btn">
     <% if (user) { %>
@@ -108,10 +113,10 @@
         label: 'Positivity score',
         data: [<%= (dream.score) %>, 2.2],
         backgroundColor: [
-          'rgba(159, 215, 234, 1)',
+          'rgba(159, 215, 234, .8)', 'rgba(105, 98, 99, .5)',
         ],
         borderColor: [
-          'rgba(159, 200, 234, 1.9)',
+          'rgba(159, 200, 234, 1.9)', 'gba(105, 98, 99, .5)',
         ],
         borderWidth: 1,
       },
@@ -119,11 +124,17 @@
     },
     options: {
       scales: {
+        xAxes: [{
+          minBarLength: 2,
+          gridLines: {
+            offsetGridLines: true
+          }
+        }],
         yAxes: [{
           ticks: {
             beginAtZero: true
           }
-        }]
+        }],
       }
     }
   });
