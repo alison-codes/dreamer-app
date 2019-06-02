@@ -1,3 +1,33 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>REVERIE ERROR MESSAGE</title>
+    <link href="https://fonts.googleapis.com/css?family=Armata|Khand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/error-style.css'>
+</head>
+
+<body>
+
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>Oops!</h1>
+			</div>
+			<h2>Houston, we've had a problem</h2>
+			<p> You may have visited a page that requires you to be logged in first. Scroll down for additional details. </p>
+            <form action="https://dreamer-app.herokuapp.com/">
+                <button type="submit">RETURN TO REVERIE HOMEPAGE</button>
+             </form>
+		</div>
+    </div>
+    
+
+
 <h1><%= message %></h1>
 <h2><%= error.status %></h2>
 <pre><%= error.stack %></pre>
+
+

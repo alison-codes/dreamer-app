@@ -1,8 +1,7 @@
-<%- include('../partials/header') %>
+<%- include("../partials/header") %>
 
 <h1 id="center">Enter your dream details</h1>
 <div class="line"></div>
-
 <% if (user) { %>
   <form action="/dreams" method="POST">
 <% } else { %>
@@ -15,7 +14,7 @@
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">What do you remember about it?</label>
-    <textarea name="description" required minlength="20" class="form-control"  id="exampleFormControlTextarea1" rows="4"></textarea>
+    <textarea name="description" required minlength="20" class="form-control"  id="exampleFormControlTextarea1" rows="4" placeholder="Tell us about the dream, providing a description of at least 20 characters..."></textarea>
   </div>
 
   <div class="form-group">
@@ -26,4 +25,4 @@
   <button type="submit" class="btn btn-primary mb-2">Log dream</button>
 </form>
 
-<%- include('../partials/footer') %>
+<%- include("../partials/footer") %>
