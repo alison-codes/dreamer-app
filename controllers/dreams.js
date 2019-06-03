@@ -24,7 +24,8 @@ function newDream(req, res) {
 
 function index(req, res) {
     var str = req.user.name;
-    var firstName = str.substr(0, str.indexOf(' '));
+    if (str.indexOf(' ') <= 0) var firstName = str;
+    else firstName = str.substr(0, str.indexOf(' '));
     Dream.find({ user_id: req.user.id }, function (err, dreams) {
         res.render('dreams/', {
             user: req.user,

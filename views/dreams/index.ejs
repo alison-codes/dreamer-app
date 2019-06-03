@@ -5,14 +5,16 @@
     <div class="col-sm-12">
       <div class="title-box text-center">
         <h1><%= name %>'s Dreams </h1>
-        <p class="subtitle-a">
-          Tracking where you stand when you sleep
-        </p>
         <% if (dreams.length) { %>
+          <p class="subtitle-a">
+            Tracking where you stand when you sleep
+          </p>
         <canvas id="dream-plot-chart" width="400" height="125"></canvas>
         <% }  else {%>
-        <div class="line"></div>
-        <br>
+          <div class="line"></div>
+
+        <h4>Reverie is an interactive application that acts as a dream journal,  
+         enabling users track their sleep patterns, view an overall sentiment of each dream based on keyword analysis, and uncover the meaning of their dreams.</h4>
         <a href="/dreams/new" id="btn-landing" class="btn"> Add your first dream!</a>
         <% }  %>
       </div>
