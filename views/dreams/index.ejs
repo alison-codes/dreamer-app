@@ -76,7 +76,9 @@
   var myChart = new Chart(ctx2, {
     type: "line",
     data: {
-      labels: [<% dreams.forEach(function (d) {  %><%= ((d.date).getMonth() + 1) %><%= ((d.date).getDate()) %>,<% }); %>],
+      labels: [<% dreams.forEach(function (d) {  %>
+        `<%= ((d.date).getMonth() + 1) %>/<%= ((d.date).getDate()) %>`,
+      <% }); %>],
     datasets: [{
       label: "Hours slept",
       data: [<% dreams.forEach(function (d) { %><%= d.hoursSlept %>,<% }); %>],

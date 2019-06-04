@@ -14,9 +14,9 @@
   <div class="line"></div>
   <div class="container">
     <time class="icon">
-      <div id="year"><%= (dream.date ).toString().slice(10, 16) %></div>
+      <div id="year">  <%= dream.dayOfWeek %> </div>
       <div id="day"> <%= (dream.date ).toString().slice(4, 8) %></div>
-      <div id="month"><%= (dream.date ).toString().slice(8, 10) %></div>
+      <div id="month"> <%= (dream.date ).toString().slice(8, 10) %></div>
     </time>
     <div class="row">
       <div class="col-sm-12">
@@ -26,7 +26,6 @@
               <div class="col-sm-6 col-md-5">
               </div>
             </div>
-
             <section>
               <span
                 data-tooltip="A sentiment analysis has been performed on the dream description you enterd. 
@@ -39,7 +38,7 @@
                     <% } else  { %>
                     <span class="bold" id="neutral">Neutral
                       <% } %> </span></span>
-            </section> 
+            </section>
             <canvas id="dream-plot-chart" width="150" height="80"></canvas>
           </div>
           <div class="col-md-6">
@@ -73,8 +72,8 @@
                   id="exampleFormControlSelect1" placeholder="Who was in your dream?" />
                 <datalist id="cast">
                   <% if (user.allCastMembers.length) { %>
-                  <% user.allCastMembers.forEach(function(c) { %>
-                  <option><%= c.castMember %></option>
+                  <% user.allCastMembers.forEach(function(usercast) { %>
+                  <option><%= usercast %></option>
                   <% }); %>
                   <% } else { %>
                   <option>Significant Other</option>
@@ -83,7 +82,7 @@
                   <option>Mother</option>
                   <option>Coworker</option>
                   <option>SEI Instructor</option>
-                  <% } %>
+                  <% }  %>
                 </datalist>
               </div>
               <input id="right" type="submit" value="Add +">
